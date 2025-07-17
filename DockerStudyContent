@@ -1,0 +1,93 @@
+### **Docker topics to cover:**
+
+#### **Basics**
+
+**1) What is Docker**
+
+* Container vs Virtualization
+* Advantages of Docker
+* Installations
+* Docker Architecture
+* Docker Engine, Containers, Images, Registry
+* Docker commands:
+  * `docker run`, `docker ps`
+  * `docker stop`, `docker rm`
+
+---
+
+**2) Working with Images**
+
+* Base image vs Custom image
+**Managing Image**
+
+* `docker pull`
+* `docker images` \[listing images]
+* `docker rmi` \[removing images]
+
+**Building Custom Image**
+
+* Writing a `Dockerfile`
+* Using `docker build`
+* `docker tag`
+
+---
+
+**3) Working with Containers**
+
+* Creating & running containers
+* Starting & stopping
+
+**Inspecting Containers**
+* `docker inspect`
+* `docker logs`
+* `docker exec`
+
+**Volume & Persistent Storage**
+* Mounting volume \[`docker volume`]
+* Bind mounts
+
+**Networking in containers**
+* Exposing port
+* C2C Communication
+
+---
+
+### **4) Docker Compose**
+
+* Managing multi-container app
+* Writing `docker-compose.yml` file
+
+  * Services, Network, Volume
+* Compose commands
+
+---
+
+### **5) Docker Registry**
+
+* Docker Hub
+
+  * Pushing & pulling images
+  * Managing repo
+* Private registry
+
+---
+
+### **6) Advanced Concepts**
+
+* **Docker Networking**
+  * Bridge, host, overlay networks
+
+* **Docker Volumes**
+  * Persistent storage for databases
+
+* **Docker Swarm**
+  * Intro to orchestration
+  * Setting up & deploying
+
+---
+
+### **7) Securities**
+
+* Securing docker images
+* Managing user permissions (`docker run --user`)
+* Using `.dockerignore` files
