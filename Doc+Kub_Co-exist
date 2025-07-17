@@ -1,0 +1,32 @@
+*** Docker + Kubernetes co-exist ***
+
+-  Kubernetes does not replace Docker.
+-  It orchestrates (schedules, runs, scales) containers.
+-  Kubernetes uses Docker as:
+    -  A container runtime
+    -  To pull, run, and stop containers in a pod
+
++--------------------------------------+
+|           Linux VM (Ubuntu)         |
+|--------------------------------------|
+|  Docker Engine (Container Runtime)  |
+|    - Pulls & runs containers        |
+|--------------------------------------|
+|       Kubernetes (Minikube)         |
+|  +-------------------------------+  |
+|  |        Control Plane          |  |
+|  | (scheduler, apiserver, etcd)  |  |
+|  +-------------------------------+  |
+|  |          Worker Node          |  |
+|  |  - kubelet                    |  |
+|  |  - kube-proxy                 |  |
+|  |  - uses Docker to run pods    |  |
+|  |                               |  |
+|  |     +-------------------+     |  |
+|  |     |       Pod         |     |  |
+|  |     |  +-------------+  |     |  |
+|  |     |  | Container   |  | <-- Docker container |
+|  |     |  +-------------+  |     |  |
+|  |     +-------------------+     |  |
+|  +-------------------------------+  |
++--------------------------------------+
