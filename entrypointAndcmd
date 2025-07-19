@@ -1,0 +1,27 @@
+#This doc explains the difference between docker entrypoint and docker cmd whilw we do docker run:-
+
+
+| Method                                 | Where?     | What it does                                                                   |
+| -------------------------------------- | ---------- | ------------------------------------------------------------------------------ |
+| 1. `ENTRYPOINT`                        | Dockerfile | Main command to **always run**                                                 |
+| 2. `CMD`                               | Dockerfile | Default **arguments** to `ENTRYPOINT` (or fallback command if no `ENTRYPOINT`) |
+| 3. `docker run IMAGE [COMMAND] [ARGS]` | CLI        | **Overrides `CMD`**, but **not `ENTRYPOINT`**                                  |
+| 4. `docker run --entrypoint COMMAND`   | CLI        | **Overrides `ENTRYPOINT`**, but still uses CMD args if given                   |
+
+
+| Scenario                                  | Final command run inside container       |
+| ----------------------------------------- | ---------------------------------------- |
+| `ENTRYPOINT + CMD`                        | `ENTRYPOINT CMD`                         |
+| `ENTRYPOINT + docker run image ARGS`      | `ENTRYPOINT ARGS`                        |
+| `--entrypoint ls + CMD`                   | `ls CMD`                                 |
+| `--entrypoint ls + docker run image ARGS` | `ls ARGS`                                |
+| Only CMD                                  | `CMD`                                    |
+| Only ENTRYPOINT                           | `ENTRYPOINT`                             |
+| Neither                                   | You must provide command at `docker run` |
+
+
+
+Use ENTRYPOINT for the base command that always runs (e.g., python, nginx, bash, java, etc.)
+Use CMD for default arguments (e.g., main.py, --debug)
+Use CLI args to override CMD
+Use --entrypoint to override the whole base command
