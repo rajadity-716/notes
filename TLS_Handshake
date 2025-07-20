@@ -1,0 +1,23 @@
+| Step | Your Version                                         | Corrected / Standard Flow                                                                | Notes                                   |
+| ---- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------- |
+| 1    | Client says hello (OS info, encryption methods)      | ✅ **ClientHello**: includes supported TLS versions, cipher suites, and random nonce      | Perfect understanding                   |
+| 2    | Server responds with encryption method + certificate | ✅ **ServerHello + Certificate**: server picks cipher, sends cert with public key         | Right                                   |
+| 3    | Client encrypts session key and sends                | 🔄 **ClientKeyExchange**: Sends a *pre-master secret* encrypted with server’s public key | Close, but it's not yet the session key |
+| 4    | Server decrypts key and sends success message        | ✅ Server uses private key to decrypt, computes session key, sends **Finished**           | Correct, this finalizes the negotiation |
+| 5    | Client acknowledges and confirms success             | ✅ Client also sends **Finished** to confirm and activate secure session                  | Great!                                  |
+
+
+
+✅ Summary of Flow:
+
+  ClientHello: "Here's what I support"
+
+  ServerHello + Certificate: "Here's what I’ll use + my identity"
+
+  ClientKeyExchange: "Here's a pre-master secret encrypted using your public key"
+
+  Key Derivation on both sides
+
+  Finished messages: Both verify the session is secure
+
+✅ Secure HTTPS connection established
